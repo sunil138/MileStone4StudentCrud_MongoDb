@@ -1,0 +1,101 @@
+<div>
+  <div class="container"> 
+    <h4>Adding a Student Form</h4> 
+    <!-- creating a student form  -->
+  <form #ngForm="ngForm" (ngSubmit)="AddStudent()">    
+    <div class="form-group"> 
+      <label for="">StudentName</label> 
+      <input type="text" class="form-control" id="StudentName" placeholder="Enter StudentName" name="studentName" [(ngModel)]="std.StudentName">
+    </div>
+    <div class="form-group"> 
+      <label for="">Address</label>
+      <input type="text" class="form-control" id="StudentAddress" placeholder="Enter Address" name="Address" [(ngModel)]="std.StudentAddress">
+    </div>
+    <div class="form-group"> 
+      <label for="">StudentAge</label>
+      <input type="text" class="form-control" id="StudentAge" placeholder="Enter StudentAge" name="Age" [(ngModel)]="std.StudentAge"> 
+    </div>
+    <div class="form-group">  
+      <label for="">StudentCourse</label>
+      <input type="text" class="form-control" id="StudentCourse" placeholder="Enter StudentCourse" name="studentcourse" [(ngModel)]="std.StudentCourse"> 
+    </div>
+    <div class="form-group"> 
+      <label for="">Gender</label>
+      <input type="text" class="form-control" id="StudentGender" placeholder="Enter Gender" name="studentgender" [(ngModel)]="std.StudentGender"> 
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button> 
+    <button type="reset" class="btn btn-danger">Reset</button> 
+  </form>  
+  </div> 
+  
+  <div class="container"> 
+    <h4>Student's Data</h4> 
+    <!-- Iterating all the student details -->
+    <table class="table table-primary table-bordered">        
+      <thead>
+        <tr>
+          <th scope="col">StudentName</th>
+          <th scope="col">StudentAddress</th>
+          <th scope="col">StudentAge</th>
+          <th scope="col">StudentCourse</th> 
+          <th scope="col">Gender</th> 
+          <th scope="col">Actions</th>    
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="" *ngFor="let ele of studentList">       
+          <td>{{ele.StudentName}}</td>
+          <td>{{ele.StudentAddress}}</td> 
+          <td>{{ele.StudentAge}}</td>
+          <td>{{ele.StudentCourse}}</td>
+          <td>{{ele.StudentGender}}</td>  
+          <td>  
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="getdata(ele)">Edit</button>
+          <button type="button" class="btn btn-danger" (click)=" DeleteStudent(ele.id)">Delete</button> 
+        </td>       
+        </tr>
+      </tbody> 
+    </table>
+  </div>
+  
+  <div class="modal fade" id="exampleModal" role="dialog" >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" >Updating Student Details</h5>  
+          <!-- Updating the form --> 
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"> 
+            <span aria-hidden="true">&times;</span> 
+          </button>
+        </div>
+        <div class="modal-body"> 
+          <form #ngForm="ngForm" (ngSubmit)="UpdateStudent()">  
+            <div class="form-group">
+              <label for="">StudentName</label> 
+              <input type="text" class="form-control" id="StudentName" placeholder="Enter StudentName" name="studentName" [(ngModel)]="currentData.StudentName">  
+            </div>     
+            <div class="form-group">
+              <label for="">Address</label>
+              <input type="text" class="form-control" id="StudentAddress" placeholder="Enter StudentAddress" name="Address" [(ngModel)]="currentData.StudentAddress">
+            </div>
+            <div class="form-group">
+              <label for="">StudentAge</label>
+              <input type="text" class="form-control" id="StudentAge" placeholder="Enter StudentAge" name="Age" [(ngModel)]="currentData.StudentAge"> 
+            </div>
+            <div class="form-group"> 
+              <label for="">StudentCourse</label>
+              <input type="text" class="form-control" id="StudentCourse" placeholder="Enter StudentCourse" name="studentcourse" [(ngModel)]="currentData.StudentCourse"> 
+            </div>
+            <div class="form-group">
+              <label for="">Gender</label>
+              <input type="text" class="form-control" id="StudentGender" placeholder="Enter Gender" name="studentgender" [(ngModel)]="currentData.StudentGender">
+            </div>
+             <button type="submit"  class="btn btn-primary" >Save</button>     
+             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>  
+      </form>    
+    </div>   
+      </div>
+    </div>
+  </div>  
+  </div> 
+
